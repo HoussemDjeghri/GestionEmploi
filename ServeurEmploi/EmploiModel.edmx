@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="sql11213826Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="creneau">
+          <Key>
+            <PropertyRef Name="id_creneau" />
+          </Key>
+          <Property Name="id_creneau" Type="int" Nullable="false" />
+          <Property Name="jour" Type="enum" Nullable="false" />
+          <Property Name="heure" Type="time" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="departement">
+          <Key>
+            <PropertyRef Name="id_departement" />
+          </Key>
+          <Property Name="id_departement" Type="int" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="emploi">
+          <Key>
+            <PropertyRef Name="id_seance" />
+          </Key>
+          <Property Name="id_seance" Type="int" Nullable="false" />
+          <Property Name="id_module" Type="int" Nullable="false" />
+          <Property Name="id_enseignant" Type="int" Nullable="false" />
+          <Property Name="id_creneau" Type="int" Nullable="false" />
+          <Property Name="id_salle" Type="int" Nullable="false" />
+          <Property Name="groupe" Type="int" Nullable="false" />
+          <Property Name="section" Type="int" Nullable="false" />
+          <Property Name="est_supp" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inscription">
+          <Key>
+            <PropertyRef Name="id_module" />
+            <PropertyRef Name="id_etudiant" />
+          </Key>
+          <Property Name="id_module" Type="int" Nullable="false" />
+          <Property Name="id_etudiant" Type="int" Nullable="false" />
+          <Property Name="groupe" Type="int" Nullable="false" />
+          <Property Name="section" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="id_module" />
+          </Key>
+          <Property Name="id_module" Type="int" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="h_cours" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="h_td" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="h_tp" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="vhs" Type="int" Nullable="false" />
+          <Property Name="coefficient" Type="int" Nullable="false" />
+          <Property Name="id_specialite" Type="int" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salle">
+          <Key>
+            <PropertyRef Name="id_salle" />
+          </Key>
+          <Property Name="id_salle" Type="int" Nullable="false" />
+          <Property Name="type" Type="enum" Nullable="false" />
+          <Property Name="num_salle" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="specialite">
+          <Key>
+            <PropertyRef Name="id_specialite" />
+          </Key>
+          <Property Name="id_specialite" Type="int" Nullable="false" />
+          <Property Name="id_departement" Type="int" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id_utilisateur" />
+          </Key>
+          <Property Name="id_utilisateur" Type="int" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="int" Nullable="false" />
+          <Property Name="id_specialite" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="emploi_ibfk_1">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_2">
+          <End Role="creneau" Type="Self.creneau" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="creneau">
+              <PropertyRef Name="id_creneau" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_creneau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_3">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_4">
+          <End Role="creneau" Type="Self.creneau" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="creneau">
+              <PropertyRef Name="id_creneau" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_creneau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_5">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id_utilisateur" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_enseignant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_6">
+          <End Role="salle" Type="Self.salle" Multiplicity="1" />
+          <End Role="emploi" Type="Self.emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salle">
+              <PropertyRef Name="id_salle" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_salle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="inscription_ibfk_1">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="inscription" Type="Self.inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="inscription">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="inscription_ibfk_2">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="inscription" Type="Self.inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="inscription">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="inscription_ibfk_3">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1" />
+          <End Role="inscription" Type="Self.inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id_utilisateur" />
+            </Principal>
+            <Dependent Role="inscription">
+              <PropertyRef Name="id_etudiant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_ibfk_1">
+          <End Role="specialite" Type="Self.specialite" Multiplicity="1" />
+          <End Role="module" Type="Self.module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specialite">
+              <PropertyRef Name="id_specialite" />
+            </Principal>
+            <Dependent Role="module">
+              <PropertyRef Name="id_specialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="specialite_ibfk_1">
+          <End Role="departement" Type="Self.departement" Multiplicity="1" />
+          <End Role="specialite" Type="Self.specialite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id_departement" />
+            </Principal>
+            <Dependent Role="specialite">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="specialite_ibfk_2">
+          <End Role="departement" Type="Self.departement" Multiplicity="1" />
+          <End Role="specialite" Type="Self.specialite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id_departement" />
+            </Principal>
+            <Dependent Role="specialite">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="utilisateur_ibfk_1">
+          <End Role="specialite" Type="Self.specialite" Multiplicity="0..1" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specialite">
+              <PropertyRef Name="id_specialite" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="id_specialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql11213826ModelStoreContainer">
+          <EntitySet Name="creneau" EntityType="Self.creneau" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="departement" EntityType="Self.departement" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="emploi" EntityType="Self.emploi" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="inscription" EntityType="Self.inscription" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="module" EntityType="Self.module" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="salle" EntityType="Self.salle" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="specialite" EntityType="Self.specialite" Schema="sql11213826" store:Type="Tables" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" Schema="sql11213826" store:Type="Tables" />
+          <AssociationSet Name="emploi_ibfk_1" Association="Self.emploi_ibfk_1">
+            <End Role="module" EntitySet="module" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_2" Association="Self.emploi_ibfk_2">
+            <End Role="creneau" EntitySet="creneau" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_3" Association="Self.emploi_ibfk_3">
+            <End Role="module" EntitySet="module" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_4" Association="Self.emploi_ibfk_4">
+            <End Role="creneau" EntitySet="creneau" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_5" Association="Self.emploi_ibfk_5">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_6" Association="Self.emploi_ibfk_6">
+            <End Role="salle" EntitySet="salle" />
+            <End Role="emploi" EntitySet="emploi" />
+          </AssociationSet>
+          <AssociationSet Name="inscription_ibfk_1" Association="Self.inscription_ibfk_1">
+            <End Role="module" EntitySet="module" />
+            <End Role="inscription" EntitySet="inscription" />
+          </AssociationSet>
+          <AssociationSet Name="inscription_ibfk_2" Association="Self.inscription_ibfk_2">
+            <End Role="module" EntitySet="module" />
+            <End Role="inscription" EntitySet="inscription" />
+          </AssociationSet>
+          <AssociationSet Name="inscription_ibfk_3" Association="Self.inscription_ibfk_3">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="inscription" EntitySet="inscription" />
+          </AssociationSet>
+          <AssociationSet Name="module_ibfk_1" Association="Self.module_ibfk_1">
+            <End Role="specialite" EntitySet="specialite" />
+            <End Role="module" EntitySet="module" />
+          </AssociationSet>
+          <AssociationSet Name="specialite_ibfk_1" Association="Self.specialite_ibfk_1">
+            <End Role="departement" EntitySet="departement" />
+            <End Role="specialite" EntitySet="specialite" />
+          </AssociationSet>
+          <AssociationSet Name="specialite_ibfk_2" Association="Self.specialite_ibfk_2">
+            <End Role="departement" EntitySet="departement" />
+            <End Role="specialite" EntitySet="specialite" />
+          </AssociationSet>
+          <AssociationSet Name="utilisateur_ibfk_1" Association="Self.utilisateur_ibfk_1">
+            <End Role="specialite" EntitySet="specialite" />
+            <End Role="utilisateur" EntitySet="utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sql11213826Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="creneau">
+          <Key>
+            <PropertyRef Name="id_creneau" />
+          </Key>
+          <Property Name="id_creneau" Type="Int32" Nullable="false" />
+          <Property Name="jour" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="heure" Type="Time" Nullable="false" />
+          <NavigationProperty Name="emplois" Relationship="sql11213826Model.emploi_ibfk_3" FromRole="creneau" ToRole="emploi" />
+        </EntityType>
+        <EntityType Name="departement">
+          <Key>
+            <PropertyRef Name="id_departement" />
+          </Key>
+          <Property Name="id_departement" Type="Int32" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="specialites" Relationship="Self.specialite_ibfk_1" FromRole="departement" ToRole="specialite" />
+          <NavigationProperty Name="specialites1" Relationship="Self.specialite_ibfk_2" FromRole="departement" ToRole="specialite" />
+        </EntityType>
+        <EntityType Name="inscription">
+          <Key>
+            <PropertyRef Name="id_module" />
+            <PropertyRef Name="id_etudiant" />
+          </Key>
+          <Property Name="id_module" Type="Int32" Nullable="false" />
+          <Property Name="id_etudiant" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="module" Relationship="Self.inscription_ibfk_1" FromRole="inscription" ToRole="module" />
+          <Property Name="groupe" Type="Int32" Nullable="false" />
+          <Property Name="section" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="utilisateur" Relationship="sql11213826Model.inscription_ibfk_3" FromRole="inscription" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="id_module" />
+          </Key>
+          <Property Name="id_module" Type="Int32" Nullable="false" />
+          <Property Name="h_cours" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_td" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="h_tp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vhs" Type="Int32" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="coefficient" Type="Int32" Nullable="false" />
+          <Property Name="id_specialite" Type="Int32" Nullable="false" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="inscriptions" Relationship="Self.inscription_ibfk_1" FromRole="module" ToRole="inscription" />
+          <NavigationProperty Name="specialite" Relationship="Self.module_ibfk_1" FromRole="module" ToRole="specialite" />
+          <NavigationProperty Name="emplois" Relationship="sql11213826Model.emploi_ibfk_2" FromRole="module" ToRole="emploi" />
+        </EntityType>
+        <EntityType Name="specialite">
+          <Key>
+            <PropertyRef Name="id_specialite" />
+          </Key>
+          <Property Name="id_specialite" Type="Int32" Nullable="false" />
+          <Property Name="id_departement" Type="Int32" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="departement" Relationship="Self.specialite_ibfk_1" FromRole="specialite" ToRole="departement" />
+          <NavigationProperty Name="departement1" Relationship="Self.specialite_ibfk_2" FromRole="specialite" ToRole="departement" />
+          <NavigationProperty Name="modules" Relationship="Self.module_ibfk_1" FromRole="specialite" ToRole="module" />
+          <NavigationProperty Name="utilisateurs" Relationship="sql11213826Model.utilisateur_ibfk_1" FromRole="specialite" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id_utilisateur" />
+          </Key>
+          <Property Name="id_utilisateur" Type="Int32" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_specialite" Type="Int32" />
+          <NavigationProperty Name="specialite" Relationship="sql11213826Model.utilisateur_ibfk_1" FromRole="utilisateur" ToRole="specialite" />
+          <NavigationProperty Name="emplois" Relationship="sql11213826Model.emploi_ibfk_5" FromRole="utilisateur" ToRole="emploi" />
+          <NavigationProperty Name="inscriptions" Relationship="sql11213826Model.inscription_ibfk_3" FromRole="utilisateur" ToRole="inscription" />
+        </EntityType>
+        <Association Name="specialite_ibfk_1">
+          <End Role="departement" Type="Self.departement" Multiplicity="1" />
+          <End Role="specialite" Type="Self.specialite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id_departement" />
+            </Principal>
+            <Dependent Role="specialite">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="specialite_ibfk_2">
+          <End Role="departement" Type="Self.departement" Multiplicity="1" />
+          <End Role="specialite" Type="Self.specialite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id_departement" />
+            </Principal>
+            <Dependent Role="specialite">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="inscription_ibfk_1">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="inscription" Type="Self.inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="inscription">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_ibfk_1">
+          <End Role="specialite" Type="Self.specialite" Multiplicity="1" />
+          <End Role="module" Type="Self.module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specialite">
+              <PropertyRef Name="id_specialite" />
+            </Principal>
+            <Dependent Role="module">
+              <PropertyRef Name="id_specialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql11213826Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="creneaux" EntityType="Self.creneau" />
+          <EntitySet Name="departements" EntityType="Self.departement" />
+          <EntitySet Name="inscriptions" EntityType="Self.inscription" />
+          <EntitySet Name="modules" EntityType="Self.module" />
+          <EntitySet Name="specialites" EntityType="Self.specialite" />
+          <EntitySet Name="utilisateurs" EntityType="Self.utilisateur" />
+          <AssociationSet Name="specialite_ibfk_1" Association="Self.specialite_ibfk_1">
+            <End Role="departement" EntitySet="departements" />
+            <End Role="specialite" EntitySet="specialites" />
+          </AssociationSet>
+          <AssociationSet Name="specialite_ibfk_2" Association="Self.specialite_ibfk_2">
+            <End Role="departement" EntitySet="departements" />
+            <End Role="specialite" EntitySet="specialites" />
+          </AssociationSet>
+          <AssociationSet Name="inscription_ibfk_1" Association="Self.inscription_ibfk_1">
+            <End Role="module" EntitySet="modules" />
+            <End Role="inscription" EntitySet="inscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="module_ibfk_1" Association="Self.module_ibfk_1">
+            <End Role="specialite" EntitySet="specialites" />
+            <End Role="module" EntitySet="modules" />
+          </AssociationSet>
+          <EntitySet Name="emplois" EntityType="sql11213826Model.emploi" />
+          <EntitySet Name="salles" EntityType="sql11213826Model.salle" />
+          <AssociationSet Name="emploi_ibfk_3" Association="sql11213826Model.emploi_ibfk_3">
+            <End Role="creneau" EntitySet="creneaux" />
+            <End Role="emploi" EntitySet="emplois" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_2" Association="sql11213826Model.emploi_ibfk_2">
+            <End Role="module" EntitySet="modules" />
+            <End Role="emploi" EntitySet="emplois" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_4" Association="sql11213826Model.emploi_ibfk_4">
+            <End Role="salle" EntitySet="salles" />
+            <End Role="emploi" EntitySet="emplois" />
+          </AssociationSet>
+          <AssociationSet Name="utilisateur_ibfk_1" Association="sql11213826Model.utilisateur_ibfk_1">
+            <End Role="specialite" EntitySet="specialites" />
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="emploi_ibfk_5" Association="sql11213826Model.emploi_ibfk_5">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="emploi" EntitySet="emplois" />
+          </AssociationSet>
+          <AssociationSet Name="inscription_ibfk_3" Association="sql11213826Model.inscription_ibfk_3">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="inscription" EntitySet="inscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="emploi">
+          <Key>
+            <PropertyRef Name="id_seance" />
+          </Key>
+          <Property Name="id_seance" Type="Int32" Nullable="false" />
+          <Property Name="id_enseignant" Type="Int32" Nullable="false" />
+          <Property Name="id_module" Type="Int32" Nullable="false" />
+          <Property Name="id_creneau" Type="Int32" Nullable="false" />
+          <Property Name="id_salle" Type="Int32" Nullable="false" />
+          <Property Name="groupe" Type="Int32" Nullable="false" />
+          <Property Name="section" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="creneau" Relationship="sql11213826Model.emploi_ibfk_3" FromRole="emploi" ToRole="creneau" />
+          <NavigationProperty Name="module" Relationship="sql11213826Model.emploi_ibfk_2" FromRole="emploi" ToRole="module" />
+          <NavigationProperty Name="salle" Relationship="sql11213826Model.emploi_ibfk_4" FromRole="emploi" ToRole="salle" />
+          <Property Name="est_supp" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="utilisateur" Relationship="sql11213826Model.emploi_ibfk_5" FromRole="emploi" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="salle">
+          <Key>
+            <PropertyRef Name="id_salle" />
+          </Key>
+          <Property Name="id_salle" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="num_salle" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="emplois" Relationship="sql11213826Model.emploi_ibfk_4" FromRole="salle" ToRole="emploi" />
+        </EntityType>
+        <Association Name="emploi_ibfk_3">
+          <End Type="sql11213826Model.creneau" Role="creneau" Multiplicity="1" />
+          <End Type="sql11213826Model.emploi" Role="emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="creneau">
+              <PropertyRef Name="id_creneau" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_creneau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_2">
+          <End Type="sql11213826Model.module" Role="module" Multiplicity="1" />
+          <End Type="sql11213826Model.emploi" Role="emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_4">
+          <End Type="sql11213826Model.salle" Role="salle" Multiplicity="1" />
+          <End Type="sql11213826Model.emploi" Role="emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salle">
+              <PropertyRef Name="id_salle" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_salle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="utilisateur_ibfk_1">
+          <End Type="sql11213826Model.specialite" Role="specialite" Multiplicity="0..1" />
+          <End Type="sql11213826Model.utilisateur" Role="utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specialite">
+              <PropertyRef Name="id_specialite" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="id_specialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="emploi_ibfk_5">
+          <End Type="sql11213826Model.utilisateur" Role="utilisateur" Multiplicity="1" />
+          <End Type="sql11213826Model.emploi" Role="emploi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id_utilisateur" />
+            </Principal>
+            <Dependent Role="emploi">
+              <PropertyRef Name="id_enseignant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="inscription_ibfk_3">
+          <End Type="sql11213826Model.utilisateur" Role="utilisateur" Multiplicity="1" />
+          <End Type="sql11213826Model.inscription" Role="inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id_utilisateur" />
+            </Principal>
+            <Dependent Role="inscription">
+              <PropertyRef Name="id_etudiant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sql11213826ModelStoreContainer" CdmEntityContainer="sql11213826Entities">
+          <EntitySetMapping Name="creneaux">
+            <EntityTypeMapping TypeName="sql11213826Model.creneau">
+              <MappingFragment StoreEntitySet="creneau">
+                <ScalarProperty Name="id_creneau" ColumnName="id_creneau" />
+                <ScalarProperty Name="jour" ColumnName="jour" />
+                <ScalarProperty Name="heure" ColumnName="heure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departements">
+            <EntityTypeMapping TypeName="sql11213826Model.departement">
+              <MappingFragment StoreEntitySet="departement">
+                <ScalarProperty Name="id_departement" ColumnName="id_departement" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inscriptions">
+            <EntityTypeMapping TypeName="sql11213826Model.inscription">
+              <MappingFragment StoreEntitySet="inscription">
+                <ScalarProperty Name="section" ColumnName="section" />
+                <ScalarProperty Name="groupe" ColumnName="groupe" />
+                <ScalarProperty Name="id_module" ColumnName="id_module" />
+                <ScalarProperty Name="id_etudiant" ColumnName="id_etudiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modules">
+            <EntityTypeMapping TypeName="sql11213826Model.module">
+              <MappingFragment StoreEntitySet="module">
+                <ScalarProperty Name="id_module" ColumnName="id_module" />
+                <ScalarProperty Name="h_cours" ColumnName="h_cours" />
+                <ScalarProperty Name="h_td" ColumnName="h_td" />
+                <ScalarProperty Name="h_tp" ColumnName="h_tp" />
+                <ScalarProperty Name="vhs" ColumnName="vhs" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="coefficient" ColumnName="coefficient" />
+                <ScalarProperty Name="id_specialite" ColumnName="id_specialite" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specialites">
+            <EntityTypeMapping TypeName="sql11213826Model.specialite">
+              <MappingFragment StoreEntitySet="specialite">
+                <ScalarProperty Name="id_specialite" ColumnName="id_specialite" />
+                <ScalarProperty Name="id_departement" ColumnName="id_departement" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisateurs">
+            <EntityTypeMapping TypeName="sql11213826Model.utilisateur">
+              <MappingFragment StoreEntitySet="utilisateur">
+                <ScalarProperty Name="id_specialite" ColumnName="id_specialite" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emplois">
+            <EntityTypeMapping TypeName="sql11213826Model.emploi">
+              <MappingFragment StoreEntitySet="emploi">
+                <ScalarProperty Name="est_supp" ColumnName="est_supp" />
+                <ScalarProperty Name="section" ColumnName="section" />
+                <ScalarProperty Name="groupe" ColumnName="groupe" />
+                <ScalarProperty Name="id_salle" ColumnName="id_salle" />
+                <ScalarProperty Name="id_creneau" ColumnName="id_creneau" />
+                <ScalarProperty Name="id_module" ColumnName="id_module" />
+                <ScalarProperty Name="id_enseignant" ColumnName="id_enseignant" />
+                <ScalarProperty Name="id_seance" ColumnName="id_seance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salles">
+            <EntityTypeMapping TypeName="sql11213826Model.salle">
+              <MappingFragment StoreEntitySet="salle">
+                <ScalarProperty Name="num_salle" ColumnName="num_salle" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id_salle" ColumnName="id_salle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

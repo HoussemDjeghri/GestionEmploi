@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d43c7b39416a4620a6339f23a61af856" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="sql11213826Model.creneau" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sql11213826Model.departement" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sql11213826Model.inscription" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sql11213826Model.module" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="sql11213826Model.specialite" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sql11213826Model.utilisateur" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="sql11213826Model.specialite_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="sql11213826Model.specialite_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="sql11213826Model.inscription_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="sql11213826Model.module_ibfk_1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="sql11213826Model.emploi" Width="1.5" PointX="10" PointY="4.5" />
+        <EntityTypeShape EntityType="sql11213826Model.salle" Width="1.5" PointX="7.75" PointY="11.375" />
+        <AssociationConnector Association="sql11213826Model.emploi_ibfk_3" />
+        <AssociationConnector Association="sql11213826Model.emploi_ibfk_2" />
+        <AssociationConnector Association="sql11213826Model.emploi_ibfk_4" />
+        <AssociationConnector Association="sql11213826Model.utilisateur_ibfk_1" />
+        <AssociationConnector Association="sql11213826Model.emploi_ibfk_5" />
+        <AssociationConnector Association="sql11213826Model.inscription_ibfk_3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
