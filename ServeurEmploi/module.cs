@@ -17,24 +17,19 @@ namespace ServeurEmploi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public module()
         {
-            this.inscriptions = new HashSet<inscription>();
             this.emplois = new HashSet<emploi>();
+            this.inscriptions = new HashSet<inscription>();
         }
     
         public int id_module { get; set; }
-        public string h_cours { get; set; }
-        public string h_td { get; set; }
-        public string h_tp { get; set; }
-        public int vhs { get; set; }
         public string designation { get; set; }
-        public int coefficient { get; set; }
-        public int id_specialite { get; set; }
         public int niveau { get; set; }
+        public int id_specialite { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<emploi> emplois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inscription> inscriptions { get; set; }
         public virtual specialite specialite { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<emploi> emplois { get; set; }
     }
 }

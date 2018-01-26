@@ -33,10 +33,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Remoting" />
@@ -51,6 +59,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enseignant\listeEtudiant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enseignant\listeEtudiant.Designer.cs">
+      <DependentUpon>listeEtudiant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="profil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="profil.Designer.cs">
+      <DependentUpon>profil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scolarite\dashboardScolarite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scolarite\dashboardScolarite.Designer.cs">
+      <DependentUpon>dashboardScolarite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scolarite\ModifierSeance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scolarite\ModifierSeance.Designer.cs">
+      <DependentUpon>ModifierSeance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scolarite\AjouterSeanceForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scolarite\AjouterSeanceForm2.Designer.cs">
+      <DependentUpon>AjouterSeanceForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommunFuctions.cs" />
     <Compile Include="Enseignant\dashboardEnseignant.cs">
       <SubType>Form</SubType>
@@ -63,12 +101,6 @@
     </Compile>
     <Compile Include="Enseignant\emploiEnseignant.Designer.cs">
       <DependentUpon>emploiEnseignant.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Enseignant\listeEtudiant.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Enseignant\listeEtudiant.Designer.cs">
-      <DependentUpon>listeEtudiant.cs</DependentUpon>
     </Compile>
     <Compile Include="Enseignant\menuEnseignant.cs">
       <SubType>Form</SubType>
@@ -102,17 +134,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scolarite\ajoutEmploiForm.cs">
+    <Compile Include="Scolarite\listeEnseignantSco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scolarite\ajoutEmploiForm.Designer.cs">
-      <DependentUpon>ajoutEmploiForm.cs</DependentUpon>
+    <Compile Include="Scolarite\listeEnseignantSco.Designer.cs">
+      <DependentUpon>listeEnseignantSco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scolarite\dashBoardScolarite.cs">
+    <Compile Include="Scolarite\listeEtudiantSco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scolarite\dashBoardScolarite.Designer.cs">
-      <DependentUpon>dashBoardScolarite.cs</DependentUpon>
+    <Compile Include="Scolarite\listeEtudiantSco.Designer.cs">
+      <DependentUpon>listeEtudiantSco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scolarite\menuScolarite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scolarite\menuScolarite.Designer.cs">
+      <DependentUpon>menuScolarite.cs</DependentUpon>
     </Compile>
     <Compile Include="Scolarite\gestionEmploiFom.cs">
       <SubType>Form</SubType>
@@ -120,14 +158,26 @@
     <Compile Include="Scolarite\gestionEmploiFom.Designer.cs">
       <DependentUpon>gestionEmploiFom.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Enseignant\listeEtudiant.resx">
+      <DependentUpon>listeEtudiant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="profil.resx">
+      <DependentUpon>profil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scolarite\dashboardScolarite.resx">
+      <DependentUpon>dashboardScolarite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scolarite\ModifierSeance.resx">
+      <DependentUpon>ModifierSeance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scolarite\AjouterSeanceForm2.resx">
+      <DependentUpon>AjouterSeanceForm2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Enseignant\dashboardEnseignant.resx">
       <DependentUpon>dashboardEnseignant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Enseignant\emploiEnseignant.resx">
       <DependentUpon>emploiEnseignant.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Enseignant\listeEtudiant.resx">
-      <DependentUpon>listeEtudiant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Enseignant\menuEnseignant.resx">
       <DependentUpon>menuEnseignant.cs</DependentUpon>
@@ -153,15 +203,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Scolarite\ajoutEmploiForm.resx">
-      <DependentUpon>ajoutEmploiForm.cs</DependentUpon>
+    <EmbeddedResource Include="Scolarite\listeEnseignantSco.resx">
+      <DependentUpon>listeEnseignantSco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scolarite\dashBoardScolarite.resx">
-      <DependentUpon>dashBoardScolarite.cs</DependentUpon>
+    <EmbeddedResource Include="Scolarite\listeEtudiantSco.resx">
+      <DependentUpon>listeEtudiantSco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scolarite\menuScolarite.resx">
+      <DependentUpon>menuScolarite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Scolarite\gestionEmploiFom.resx">
       <DependentUpon>gestionEmploiFom.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

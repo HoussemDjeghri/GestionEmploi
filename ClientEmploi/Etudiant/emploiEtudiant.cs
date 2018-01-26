@@ -40,9 +40,11 @@ namespace ClientEmploi
 
         public void AddToEmploiPanel(BunifuThinButton2 bt,int ligne,int col) {
 
-            emploiPanel.Controls.Add(bt,ligne,col);
+
+            emploiPanel.Controls.Add(bt,col,ligne);
             
 
         }
+        public TableLayoutPanel getEmploi() { return emploiPanel; }
     }
 }

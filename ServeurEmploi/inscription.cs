@@ -19,7 +19,7 @@ namespace ServeurEmploi
         public int groupe { get; set; }
         public int section { get; set; }
     
-        public virtual module module { get; set; }
         public virtual utilisateur utilisateur { get; set; }
+        public virtual module module { get; set; }
     }
 }

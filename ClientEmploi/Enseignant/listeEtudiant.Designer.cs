@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(listeEtudiant));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(listeEtudiantSco));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.filterBtn = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
+            this.groupeDrop = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bunifuDropdown2 = new Bunifu.Framework.UI.BunifuDropdown();
+            this.niveauDrop = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listeEtud = new System.Windows.Forms.ListView();
             this.Nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Prenom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -76,21 +77,27 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(233)))), ((int)(((byte)(237)))));
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel1.Controls.Add(this.filterBtn, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.filterBtn, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 62);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1013, 66);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // filterBtn
             // 
@@ -111,64 +118,67 @@
             this.filterBtn.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(153)))));
             this.filterBtn.IdleForecolor = System.Drawing.Color.White;
             this.filterBtn.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(153)))));
-            this.filterBtn.Location = new System.Drawing.Point(725, 9);
+            this.filterBtn.Location = new System.Drawing.Point(775, 9);
             this.filterBtn.Margin = new System.Windows.Forms.Padding(5);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(181, 47);
             this.filterBtn.TabIndex = 7;
             this.filterBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
             // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
-            this.panel4.Controls.Add(this.bunifuDropdown1);
-            this.panel4.Location = new System.Drawing.Point(370, 14);
+            this.panel4.Controls.Add(this.groupeDrop);
+            this.panel4.Location = new System.Drawing.Point(491, 14);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(219, 37);
             this.panel4.TabIndex = 6;
             // 
-            // bunifuDropdown1
+            // groupeDrop
             // 
-            this.bunifuDropdown1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bunifuDropdown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
-            this.bunifuDropdown1.BorderRadius = 20;
-            this.bunifuDropdown1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuDropdown1.Items = new string[0];
-            this.bunifuDropdown1.Location = new System.Drawing.Point(2, 2);
-            this.bunifuDropdown1.Name = "bunifuDropdown1";
-            this.bunifuDropdown1.NomalColor = System.Drawing.Color.White;
-            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuDropdown1.selectedIndex = -1;
-            this.bunifuDropdown1.Size = new System.Drawing.Size(216, 34);
-            this.bunifuDropdown1.TabIndex = 3;
+            this.groupeDrop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupeDrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
+            this.groupeDrop.BorderRadius = 20;
+            this.groupeDrop.DisabledColor = System.Drawing.Color.Gainsboro;
+            this.groupeDrop.Enabled = false;
+            this.groupeDrop.ForeColor = System.Drawing.Color.Black;
+            this.groupeDrop.Items = new string[0];
+            this.groupeDrop.Location = new System.Drawing.Point(2, 2);
+            this.groupeDrop.Name = "groupeDrop";
+            this.groupeDrop.NomalColor = System.Drawing.Color.White;
+            this.groupeDrop.onHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.groupeDrop.selectedIndex = -1;
+            this.groupeDrop.Size = new System.Drawing.Size(216, 34);
+            this.groupeDrop.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
-            this.panel3.Controls.Add(this.bunifuDropdown2);
-            this.panel3.Location = new System.Drawing.Point(50, 14);
+            this.panel3.Controls.Add(this.niveauDrop);
+            this.panel3.Location = new System.Drawing.Point(135, 14);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(219, 37);
             this.panel3.TabIndex = 5;
             // 
-            // bunifuDropdown2
+            // niveauDrop
             // 
-            this.bunifuDropdown2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bunifuDropdown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
-            this.bunifuDropdown2.BorderRadius = 20;
-            this.bunifuDropdown2.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuDropdown2.Items = new string[0];
-            this.bunifuDropdown2.Location = new System.Drawing.Point(2, 2);
-            this.bunifuDropdown2.Name = "bunifuDropdown2";
-            this.bunifuDropdown2.NomalColor = System.Drawing.Color.White;
-            this.bunifuDropdown2.onHoverColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuDropdown2.selectedIndex = -1;
-            this.bunifuDropdown2.Size = new System.Drawing.Size(216, 34);
-            this.bunifuDropdown2.TabIndex = 3;
+            this.niveauDrop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.niveauDrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
+            this.niveauDrop.BorderRadius = 20;
+            this.niveauDrop.DisabledColor = System.Drawing.Color.Gray;
+            this.niveauDrop.ForeColor = System.Drawing.Color.Black;
+            this.niveauDrop.Items = new string[0];
+            this.niveauDrop.Location = new System.Drawing.Point(2, 2);
+            this.niveauDrop.Name = "niveauDrop";
+            this.niveauDrop.NomalColor = System.Drawing.Color.White;
+            this.niveauDrop.onHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.niveauDrop.selectedIndex = -1;
+            this.niveauDrop.Size = new System.Drawing.Size(216, 34);
+            this.niveauDrop.TabIndex = 3;
+            this.niveauDrop.onItemSelected += new System.EventHandler(this.niveauDrop_onItemSelected);
             // 
             // panel2
             // 
@@ -186,8 +196,7 @@
             this.listeEtud.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listeEtud.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Nom,
-            this.Prenom,
-            this.Email});
+            this.Prenom});
             this.listeEtud.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listeEtud.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listeEtud.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(144)))), ((int)(((byte)(147)))));
@@ -204,19 +213,40 @@
             // Nom
             // 
             this.Nom.Text = "Nom";
-            this.Nom.Width = 321;
+            this.Nom.Width = 506;
             // 
             // Prenom
             // 
             this.Prenom.Text = "Prenom";
-            this.Prenom.Width = 320;
+            this.Prenom.Width = 507;
             // 
-            // Email
+            // label13
             // 
-            this.Email.Text = "Email";
-            this.Email.Width = 374;
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DimGray;
+            this.label13.Location = new System.Drawing.Point(414, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 66);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Groupe";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listeEtudiant
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DimGray;
+            this.label12.Location = new System.Drawing.Point(63, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 66);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Niveau";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listeEtudiantSco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,11 +255,12 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "listeEtudiant";
+            this.Name = "listeEtudiantSco";
             this.Text = "listeEtudiant";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -244,13 +275,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown2;
+        private Bunifu.Framework.UI.BunifuDropdown niveauDrop;
         private System.Windows.Forms.Panel panel4;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
+        private Bunifu.Framework.UI.BunifuDropdown groupeDrop;
         private Bunifu.Framework.UI.BunifuThinButton2 filterBtn;
         private System.Windows.Forms.ListView listeEtud;
         private System.Windows.Forms.ColumnHeader Nom;
         private System.Windows.Forms.ColumnHeader Prenom;
-        private System.Windows.Forms.ColumnHeader Email;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

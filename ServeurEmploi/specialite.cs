@@ -26,7 +26,6 @@ namespace ServeurEmploi
         public string designation { get; set; }
     
         public virtual departement departement { get; set; }
-        public virtual departement departement1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<module> modules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

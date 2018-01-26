@@ -16,5 +16,10 @@ namespace EmploiDuTempsDLL
         public int salle { get; set; }
         public int niveau { get; set; }
         public int group { get; set; }
+        public int section { get; set; }
+        public int id_seance { get; set; }
+        public int id_en { get; set; }
+        public int id_module { get; set; }
+        public sbyte est_supp { get; set; }
     }
 }

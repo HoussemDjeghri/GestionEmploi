@@ -18,40 +18,70 @@ namespace ClientEmploi
     public partial class menuEtudiant : Form
     {
         IEtudiant obj;
-        public menuEtudiant()
+        public menuEtudiant(IEtudiant obj)
         {
-            TcpChannel chnl = new TcpChannel();
-
-            ChannelServices.RegisterChannel(chnl, false);
-
-            Console.WriteLine("Client : Canal Enregistré");
-            obj = (IEtudiant)Activator.GetObject(typeof(IEtudiant), "tcp://localhost:1235/ObjEtudiant");
-            if (obj == null)
-            {
-                Console.WriteLine("Problem du Serveur");
-
-
-            }
-            else
-            {
-
-                Console.WriteLine("Reference Aquise avec succés");
-
-            }
-
-            Console.WriteLine("Serveur Démarré");
-
-
+            this.obj = obj;
             InitializeComponent();
-
-
+            prenomLabel.Text = loginForm.user.prenom;
+            
             emploiEtudiant emploietud = new emploiEtudiant();
+            ArrayList emploi = obj.acceder_emploi(loginForm.user.id_utilisateur);
+            ViderEmploi(emploietud.getEmploi());
+            for (int ligne = 1; ligne <= 5; ligne++)
+            {
+
+                for (int colomne = 1; colomne <= 5; colomne++)
+                {
+                    int cr = (ligne * 5) - (5 - colomne);
+                    foreach (EmploiObj item in emploi)
+                    {
+
+                        if (item.id_creaneau == cr)
+                        {
+
+                            BunifuThinButton2 bc = null;
+                            switch (item.type)
+                            {
+                                case "amphi":
+                                    bc = CreerCourBtn(item.module, item.salle);
+
+                                    break;
+                                case "td":
+                                    bc = CreerTDBtn(item.module, item.salle);
+                                    break;
+                                case "tp":
+                                    bc = CreerTPBtn(item.module, item.salle);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            if (bc != null) { emploietud.AddToEmploiPanel(bc, ligne, colomne); }
+
+
+
+
+
+
+
+                        }
+
+
+                    }
+
+                }
+
+
+
+            }
+
 
             emploietud.TopLevel = false;
             emploietud.AutoScroll = true;
             container.Controls.Clear();
             container.Controls.Add(emploietud);
             emploietud.Show();
+
         }
 
         private void titleBar_Paint(object sender, PaintEventArgs e)
@@ -77,13 +107,14 @@ namespace ClientEmploi
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
           
-            ArrayList emploi = obj.acceder_emploi(3001);
+            ArrayList emploi = obj.acceder_emploi(loginForm.user.id_utilisateur);
 
             emploiEtudiant emploietud = new emploiEtudiant();
-
+            ViderEmploi(emploietud.getEmploi());
+           
             for (int ligne = 1; ligne <=5 ; ligne++)
             {
-
+               
                 for (int colomne = 1; colomne <= 5; colomne++)
                 {
                     int cr = (ligne * 5) - (5 - colomne);
@@ -108,6 +139,7 @@ namespace ClientEmploi
                                 default:
                                     break;
                             }
+                           
 
                             if (bc != null) { emploietud.AddToEmploiPanel(bc, ligne, colomne); }
                            
@@ -128,7 +160,7 @@ namespace ClientEmploi
 
             }
 
-
+           
             emploietud.TopLevel = false;
             emploietud.AutoScroll = true;
             container.Controls.Clear();
@@ -149,9 +181,31 @@ namespace ClientEmploi
 
         }
 
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            // do this to unregister the channel
+            IChannel[] regChannels = ChannelServices.RegisteredChannels;
+            IChannel channel = (IChannel)ChannelServices.GetChannel(regChannels[0].ChannelName);
+
+            ChannelServices.UnregisterChannel(channel);
 
 
-     
+            loginForm log = new loginForm();
 
+            this.Hide();
+            log.Closed += (s, args) => this.Close();
+            log.Show();
+        }
+
+        private void container_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void profilBtn_Click(object sender, EventArgs e)
+        {
+            profil listenForm = new profil(loginForm.obj);
+            listenForm.Show();
+        }
     }
 }

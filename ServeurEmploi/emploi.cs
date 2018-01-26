@@ -21,11 +21,11 @@ namespace ServeurEmploi
         public int id_salle { get; set; }
         public int groupe { get; set; }
         public int section { get; set; }
-        public bool est_supp { get; set; }
+        public sbyte est_supp { get; set; }
     
         public virtual creneau creneau { get; set; }
+        public virtual utilisateur utilisateur { get; set; }
         public virtual module module { get; set; }
         public virtual salle salle { get; set; }
-        public virtual utilisateur utilisateur { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace ServeurEmploi
         public departement()
         {
             this.specialites = new HashSet<specialite>();
-            this.specialites1 = new HashSet<specialite>();
         }
     
         public int id_departement { get; set; }
@@ -26,7 +25,5 @@ namespace ServeurEmploi
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<specialite> specialites { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<specialite> specialites1 { get; set; }
     }
 }

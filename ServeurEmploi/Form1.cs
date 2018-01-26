@@ -1,6 +1,8 @@
 ﻿
+using EmploiDuTempsDLL;
 using ServeurEmploi;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,12 +64,22 @@ namespace ServeurEmploi
             else
             {
 
-                 chnl = new TcpChannel(1235);
+                BinaryServerFormatterSinkProvider provider = new BinaryServerFormatterSinkProvider();
+                provider.TypeFilterLevel = TypeFilterLevel.Full;
+                IDictionary props = new Hashtable();
+                props["port"] = 1235;
+
+               chnl = new TcpChannel(props, null, provider);
+               
 
                 ChannelServices.RegisterChannel(chnl, false);
 
+               
                 RemotingConfiguration.RegisterWellKnownServiceType(typeof(IEtudiantImpl), "ObjEtudiant", WellKnownObjectMode.SingleCall);
                 RemotingConfiguration.RegisterWellKnownServiceType(typeof(IEnseignantImpl), "ObjEnseignant", WellKnownObjectMode.SingleCall);
+                RemotingConfiguration.RegisterWellKnownServiceType(typeof(IScolariteImpl), "ObjScolarite", WellKnownObjectMode.SingleCall);
+                RemotingConfiguration.RegisterWellKnownServiceType(typeof(Authentification), "ObjAuthentification", WellKnownObjectMode.SingleCall);
+                RemotingConfiguration.RegisterWellKnownServiceType(typeof(NotificationClass), "ObjNotification", WellKnownObjectMode.Singleton);
 
                 pbox.ImageLocation = "E:/off.png";
                 label1.Text = "Serveur ON";

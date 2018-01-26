@@ -1,4 +1,6 @@
 ﻿using Bunifu.Framework.UI;
+using ClientEmploi.Enseignant;
+using EmploiDuTempsDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,12 @@ namespace ClientEmploi
 {
     public partial class emploiEnseignant : Form
     {
+        
         public emploiEnseignant()
         {
+
             InitializeComponent();
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -93,15 +98,39 @@ namespace ClientEmploi
 
         }
 
-
-        public void AddToEmploiPanel(BunifuThinButton2 bt, int ligne, int col)
+        public TableLayoutPanel get_emploi()
         {
-           
+            return emploiPanel;
+        }
+
+        public void AddToEmploiPanel(BunifuThinButton2 bt, int ligne, int col,int id_seance)
+        {
+          
             emploiPanel.Controls.Add(bt, ligne, col);
-            bt.Click += new EventHandler(this.showModal);
+           
+            bt.Click += (sender, EventArgs) => { signaler_Click(sender, EventArgs, id_seance); };
 
         }
 
+        public void signaler_Click(object  sender, EventArgs e, int id_seance) {
+
+
+         if (signalerSeance.ShowBox())
+            {
+
+                MessageBox.Show("Séance signalé");
+
+            }
+            else
+            {
+
+                MessageBox.Show("Séance non signalé");
+
+            }
+
+           
+
+        }
         private void bunifuDropdown1_onItemSelected_1(object sender, EventArgs e)
         {
          
@@ -124,6 +153,18 @@ namespace ClientEmploi
 
 
         }
-        
+
+        public void OnEmploiChanged(int id_en, String notif)
+        {
+
+            if (loginForm.user.id_utilisateur == id_en)
+            {
+
+                MessageBox.Show(notif);
+
+            }
+
+        }
+
     }
 }

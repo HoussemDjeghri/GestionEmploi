@@ -22,7 +22,7 @@ namespace ServeurEmploi
     
         public int id_creneau { get; set; }
         public string jour { get; set; }
-        public System.TimeSpan heure { get; set; }
+        public string heure { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<emploi> emplois { get; set; }

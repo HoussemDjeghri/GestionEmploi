@@ -13,10 +13,10 @@ namespace ServeurEmploi
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class sql11213826Entities : DbContext
+    public partial class emploiEntities : DbContext
     {
-        public sql11213826Entities()
-            : base("name=sql11213826Entities")
+        public emploiEntities()
+            : base("name=emploiEntities")
         {
         }
     
@@ -27,11 +27,11 @@ namespace ServeurEmploi
     
         public virtual DbSet<creneau> creneaux { get; set; }
         public virtual DbSet<departement> departements { get; set; }
+        public virtual DbSet<emploi> emplois { get; set; }
         public virtual DbSet<inscription> inscriptions { get; set; }
         public virtual DbSet<module> modules { get; set; }
+        public virtual DbSet<salle> salles { get; set; }
         public virtual DbSet<specialite> specialites { get; set; }
         public virtual DbSet<utilisateur> utilisateurs { get; set; }
-        public virtual DbSet<emploi> emplois { get; set; }
-        public virtual DbSet<salle> salles { get; set; }
     }
 }

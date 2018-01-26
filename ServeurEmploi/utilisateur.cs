@@ -22,16 +22,16 @@ namespace ServeurEmploi
         }
     
         public int id_utilisateur { get; set; }
-        public string prenom { get; set; }
         public string nom { get; set; }
-        public int password { get; set; }
+        public string prenom { get; set; }
+        public string mot_de_passe { get; set; }
         public string type { get; set; }
         public Nullable<int> id_specialite { get; set; }
     
-        public virtual specialite specialite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<emploi> emplois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inscription> inscriptions { get; set; }
+        public virtual specialite specialite { get; set; }
     }
 }

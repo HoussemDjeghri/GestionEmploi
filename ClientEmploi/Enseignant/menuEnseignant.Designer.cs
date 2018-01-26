@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menuEnseignant));
             this.sidebar = new System.Windows.Forms.Panel();
+            this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
             this.gestEtudBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.emploiBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableauBoardBtn = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -38,26 +39,26 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.label2 = new System.Windows.Forms.Label();
+            this.prenomLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.header = new System.Windows.Forms.Panel();
-            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.container = new System.Windows.Forms.Panel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.sidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebar
             // 
             this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
+            this.sidebar.Controls.Add(this.bunifuImageButton3);
             this.sidebar.Controls.Add(this.gestEtudBtn);
             this.sidebar.Controls.Add(this.emploiBtn);
             this.sidebar.Controls.Add(this.tableauBoardBtn);
@@ -68,13 +69,28 @@
             this.sidebar.Size = new System.Drawing.Size(251, 681);
             this.sidebar.TabIndex = 0;
             // 
+            // bunifuImageButton3
+            // 
+            this.bunifuImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(43)))), ((int)(((byte)(50)))));
+            this.bunifuImageButton3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bunifuImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton3.Image")));
+            this.bunifuImageButton3.ImageActive = null;
+            this.bunifuImageButton3.Location = new System.Drawing.Point(0, 650);
+            this.bunifuImageButton3.Name = "bunifuImageButton3";
+            this.bunifuImageButton3.Size = new System.Drawing.Size(251, 31);
+            this.bunifuImageButton3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton3.TabIndex = 9;
+            this.bunifuImageButton3.TabStop = false;
+            this.bunifuImageButton3.Zoom = 10;
+            this.bunifuImageButton3.Click += new System.EventHandler(this.bunifuImageButton3_Click);
+            // 
             // gestEtudBtn
             // 
             this.gestEtudBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
             this.gestEtudBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
             this.gestEtudBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gestEtudBtn.BorderRadius = 0;
-            this.gestEtudBtn.ButtonText = "   Gest. Etudiants";
+            this.gestEtudBtn.ButtonText = "   Liste Etudiants";
             this.gestEtudBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gestEtudBtn.DisabledColor = System.Drawing.Color.White;
             this.gestEtudBtn.Dock = System.Windows.Forms.DockStyle.Top;
@@ -100,7 +116,7 @@
             this.gestEtudBtn.selected = false;
             this.gestEtudBtn.Size = new System.Drawing.Size(251, 63);
             this.gestEtudBtn.TabIndex = 8;
-            this.gestEtudBtn.Text = "   Gest. Etudiants";
+            this.gestEtudBtn.Text = "   Liste Etudiants";
             this.gestEtudBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gestEtudBtn.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gestEtudBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +128,7 @@
             this.emploiBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
             this.emploiBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.emploiBtn.BorderRadius = 0;
-            this.emploiBtn.ButtonText = "   Gest. Emploi du temps";
+            this.emploiBtn.ButtonText = "   Emploi du temps";
             this.emploiBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.emploiBtn.DisabledColor = System.Drawing.Color.White;
             this.emploiBtn.Dock = System.Windows.Forms.DockStyle.Top;
@@ -138,7 +154,7 @@
             this.emploiBtn.selected = false;
             this.emploiBtn.Size = new System.Drawing.Size(251, 63);
             this.emploiBtn.TabIndex = 6;
-            this.emploiBtn.Text = "   Gest. Emploi du temps";
+            this.emploiBtn.Text = "   Emploi du temps";
             this.emploiBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.emploiBtn.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.emploiBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,7 +203,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.bunifuThinButton21);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.prenomLabel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -242,17 +258,17 @@
             this.bunifuThinButton21.Size = new System.Drawing.Size(63, 39);
             this.bunifuThinButton21.TabIndex = 3;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
-            // label2
+            // prenomLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(116, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 21);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Bahri";
+            this.prenomLabel.AutoSize = true;
+            this.prenomLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prenomLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.prenomLabel.Location = new System.Drawing.Point(116, 83);
+            this.prenomLabel.Name = "prenomLabel";
+            this.prenomLabel.Size = new System.Drawing.Size(0, 21);
+            this.prenomLabel.TabIndex = 2;
             // 
             // label1
             // 
@@ -279,27 +295,12 @@
             // header
             // 
             this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.header.Controls.Add(this.bunifuImageButton2);
             this.header.Controls.Add(this.bunifuImageButton1);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(251, 0);
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(1013, 54);
             this.header.TabIndex = 1;
-            // 
-            // bunifuImageButton2
-            // 
-            this.bunifuImageButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
-            this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(6, 3);
-            this.bunifuImageButton2.Name = "bunifuImageButton2";
-            this.bunifuImageButton2.Size = new System.Drawing.Size(28, 45);
-            this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton2.TabIndex = 8;
-            this.bunifuImageButton2.TabStop = false;
-            this.bunifuImageButton2.Zoom = 10;
-            this.bunifuImageButton2.Click += new System.EventHandler(this.bunifuImageButton2_Click);
             // 
             // bunifuImageButton1
             // 
@@ -323,6 +324,7 @@
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(1013, 627);
             this.container.TabIndex = 2;
+            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // bunifuDragControl1
             // 
@@ -345,13 +347,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashBoard";
             this.sidebar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.header.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
@@ -367,14 +369,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label prenomLabel;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
         private Bunifu.Framework.UI.BunifuFlatButton gestEtudBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton3;
     }
 }
 
